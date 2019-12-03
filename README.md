@@ -5,7 +5,7 @@ Fetch data from PHP/MySQL
 
 Set up a MySQL database.
 
-Create a PHP script which connects to the database.
+Create a PHP script which connects to the database and retrieve the desired data.
 
 This should do it. 
 
