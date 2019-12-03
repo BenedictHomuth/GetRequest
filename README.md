@@ -1,7 +1,7 @@
 # GetRequest
 Fetch data from PHP/MySQL
 
-#How to use
+# How to use
 
 Set up a MySQL database.
 
