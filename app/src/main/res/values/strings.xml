@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GetRequest</string>
+    <string name="network_failed">No network found</string>
+</resources>
