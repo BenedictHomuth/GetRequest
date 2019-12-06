@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity{
             });
         }else{
             Log.d(TAG, "No internet");
+            btn_getData.setEnabled(false);
             tv_error.setText(R.string.InternetNotGranted);
         }
     }
