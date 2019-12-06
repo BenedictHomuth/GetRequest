@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">GetRequest</string>
     <string name="network_failed">No network found</string>
+    <string name="errorOnTV">Oops... something went wrong</string>
+    <string name="btn_Go_Text">Go!</string>
+    <string name="mainHeader">Retrieve Data from DB</string>
+    <string name="InternetGranted">Internet Permission granted</string>
+    <string name="InternetNotGranted">Internet Permission not granted</string>
 </resources>

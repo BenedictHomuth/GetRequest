@@ -14,7 +14,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         Intent intent = getIntent();
 
-        String getIT = (String)intent.getStringExtra("intent_data") + "<- got Dammit";
+        String getIT = intent.getStringExtra("intent_data");
 
         TextView tv = findViewById(R.id.int_Data);
 
