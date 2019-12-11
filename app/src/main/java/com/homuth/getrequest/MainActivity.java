@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void getDataFromDB(){
         final TextView tv_errorMsg = findViewById(R.id.ifError);
+        //Wenn über HotSpot verbunden: ipconfig-> Drahtlos-LAN-Adapter WLAN: -> letztes Mal: 192.168.1.2
         String jsonURL = "http://10.0.2.2:8080/app/";
 
         OkHttpClient client = new OkHttpClient();
