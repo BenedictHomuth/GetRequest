@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity{
         final TextView tv_errorMsg = findViewById(R.id.ifError);
         //Wenn über HotSpot verbunden: ipconfig-> Drahtlos-LAN-Adapter WLAN: -> letztes Mal: 192.168.1.2
         //String jsonURL = "http://10.0.2.2/droneapp/";
-        String jsonURL = "http://" + connectionIP + "/droneapp/";
+        String jsonURL = "http://" + connectionIP + "/droneapp/api/retrieveData.php";
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
