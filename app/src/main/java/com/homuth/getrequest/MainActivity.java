@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +28,9 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity{
     private static final String TAG = "Main Activity ->";
     private TextView tv_error;
+    private TextView tv_enterIP;
     private Button btn_getData;
+    private EditText et_enterIP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +60,17 @@ public class MainActivity extends AppCompatActivity{
     public void initUI(){
         tv_error = findViewById(R.id.ifError);
         btn_getData = findViewById(R.id.getData);
+        et_enterIP = findViewById(R.id.enterIP);
+        tv_enterIP = findViewById(R.id.tv_enterIP);
     }
 
 
     public void getDataFromDB(){
+        String connectionIP = et_enterIP.getText().toString();
         final TextView tv_errorMsg = findViewById(R.id.ifError);
         //Wenn über HotSpot verbunden: ipconfig-> Drahtlos-LAN-Adapter WLAN: -> letztes Mal: 192.168.1.2
-        String jsonURL = "http://10.0.2.2/droneapp/";
+        //String jsonURL = "http://10.0.2.2/droneapp/";
+        String jsonURL = "http://" + connectionIP + "/droneapp/";
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()

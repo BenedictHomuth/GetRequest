@@ -6,4 +6,7 @@
     <string name="mainHeader">Retrieve Data from DB</string>
     <string name="InternetGranted">Internet Permission granted</string>
     <string name="InternetNotGranted">Internet Permission not granted</string>
+    <string name="standardIP">10.0.2.2</string>
+    <string name="tv_enterIP">The network IP</string>
+    <string name="hint_enterIP">Please enter the network IP</string>
 </resources>
