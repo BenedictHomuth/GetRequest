@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">GetRequest</string>
     <string name="network_failed">No network found</string>
-    <string name="errorOnTV">Oops... something went wrong</string>
     <string name="btn_Go_Text">Go!</string>
     <string name="mainHeader">Retrieve Data from DB</string>
     <string name="InternetGranted">Internet Permission granted</string>
@@ -9,4 +8,11 @@
     <string name="standardIP">10.0.2.2</string>
     <string name="tv_enterIP">The network IP</string>
     <string name="hint_enterIP">Please enter the network IP</string>
+
+
+    <!--start activity-->
+    <string name="errorOnTV">Oops... something went wrong</string>
+    <string name="tv_serverResponse">Response from Server:</string>
+    <string name="sendDataToServer">Send Data</string>
+    <string name="tv_dataToServer">Click to send test data to the DB</string>
 </resources>
