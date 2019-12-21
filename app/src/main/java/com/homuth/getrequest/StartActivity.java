@@ -19,6 +19,7 @@ import java.net.URL;
 public class StartActivity extends AppCompatActivity {
     private static final String TAG = "Start Activity ->";
     private Button btn_sendData;
+    private Button btn_photo;
     private TextView tv_serverResonse;
     private TextView tv_messageFromServer;
     private TextView tv_sendData;
@@ -41,6 +42,14 @@ public class StartActivity extends AppCompatActivity {
                 new WriteToDBTask().execute();
             }
         });
+
+        btn_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StartActivity.this, UploadPictures.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void initUI(){
@@ -49,6 +58,7 @@ public class StartActivity extends AppCompatActivity {
         tv_messageFromServer = findViewById(R.id.tv_messageFromServer);
         tv_sendData = findViewById(R.id.tv_sendDataToDB);
         tv_OnResponseServerQuery = findViewById(R.id.tv_OnResponseDataSend);
+        btn_photo = findViewById(R.id.btn_photo);
     }
 
     public class WriteToDBTask extends AsyncTask<String,String,String>

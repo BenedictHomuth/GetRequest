@@ -15,4 +15,8 @@
     <string name="tv_serverResponse">Response from Server:</string>
     <string name="sendDataToServer">Send Data</string>
     <string name="tv_dataToServer">Click to send test data to the DB</string>
+    <string name="btn_Photo">Photo</string>
+
+    <!-- uploadPictures -->
+    <string name="sendPhoto">Send Picture</string>
 </resources>
