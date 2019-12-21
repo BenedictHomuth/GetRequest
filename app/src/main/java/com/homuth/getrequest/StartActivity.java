@@ -3,19 +3,18 @@ package com.homuth.getrequest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class StartActivity extends AppCompatActivity {
     private static final String TAG = "Start Activity ->";
@@ -24,6 +23,8 @@ public class StartActivity extends AppCompatActivity {
     private TextView tv_messageFromServer;
     private TextView tv_sendData;
     private TextView tv_OnResponseServerQuery;
+
+    String serverResponse = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class StartActivity extends AppCompatActivity {
         btn_sendData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeDataToDB();
+                new WriteToDBTask().execute();
             }
         });
     }
@@ -50,48 +51,47 @@ public class StartActivity extends AppCompatActivity {
         tv_OnResponseServerQuery = findViewById(R.id.tv_OnResponseDataSend);
     }
 
-    public void writeDataToDB(){
+    public class WriteToDBTask extends AsyncTask<String,String,String>
+    {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
-        String httpURL = "http://10.0.2.2/droneapp/api/insertData.php";
+        @Override
+        protected void onPostExecute(String s) {
+           // super.onPostExecute(s);
+            Toast.makeText(StartActivity.this, serverResponse, Toast.LENGTH_LONG).show();
+        }
 
-        OkHttpClient client = new OkHttpClient();
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+        }
 
-        RequestBody formBody = new FormBody.Builder()
-                .add("name", "Mayer")
-                .add("vorname", "Hans")
-                .add("telefon", "5555")
-                .build();
-        final Request request = new Request.Builder()
-                .url(httpURL)
-                .post(formBody)
-                .build();
+        @Override
+        protected String doInBackground(String... strings) {
+            String plusServiceURL ="http://10.0.2.2:8080/droneapp/api/pushDataToDB.php?lastName=HANS&firstName=HASN&email=HASN";
+            try {
+                URL url = new URL(plusServiceURL);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                con.connect();
 
 
-        try {
-            //TODO
-            /*
-            There is an NetworkOnMainThreadException because of obviously it runs on the main thread.
-            Network stuff should never run on the main thread!
-            Try again to implement Asynchronous task or find a synchronous approch to send data to a
-            server.
+                BufferedReader bf = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                serverResponse= bf.readLine();
 
-             */
 
-            final Response response = client.newCall(request).execute();
-
-            Log.d(TAG,"I'm here!");
-
-           StartActivity.this.runOnUiThread(new Runnable() {
-               @Override
-               public void run() {
-                   tv_OnResponseServerQuery.setText(response.body().toString());
-               }
-           });
-        } catch (IOException e) {
-
-            tv_OnResponseServerQuery.setText("That didn't work");
-            //Thread.sleep(5000);
-            e.printStackTrace();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return null;
         }
     }
+
 }
+
+
+
